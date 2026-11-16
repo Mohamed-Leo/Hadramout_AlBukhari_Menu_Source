@@ -1,0 +1,487 @@
+const MENU_DATA = [
+  {
+    id: 'offers',
+    title: 'أقوى عروض حضرى موت البخارى',
+    icon: '🔥',
+    items: [
+      { name: '٥ ورك شوايه + رز بسمتى', price: '380 ج.م', oldPrice: '550 ج.م' },
+      { name: 'فرخة + نص كفتة', price: '550 ج.م', oldPrice: '750 ج.م' },
+      { name: 'نص فراخ + نص كفتة', price: '370 ج.م', oldPrice: '500 ج.م' },
+      {
+        name: 'نص سجق + نص طرب + نص كفتة + نص شيش',
+        price: '900 ج.م',
+        oldPrice: '1300 ج.م',
+      },
+    ],
+  },
+  {
+    id: 'kitchen',
+    title: 'المطبخ',
+    icon: '🍲',
+    items: [
+      { name: 'كيلو محشي', price: '220 ج.م' },
+      { name: 'علبة خضار سادة', price: '40 ج.م' },
+      { name: 'مكرونة بشاميل', price: '60 ج.م' },
+      { name: 'مكرونة موزاريلا', price: '80 ج.م' },
+      { name: 'مكرونة بالسجق', price: '80 ج.م' },
+      { name: 'مكرونة باللحمة المفرومة بالونيز', price: '80 ج.م' },
+      { name: 'مكرونة بالكبدة الإسكندراني', price: '80 ج.م' },
+      { name: 'كيلو ممبار', price: '300 ج.م' },
+      { name: 'طلب ممبار', price: '100 ج.م' },
+      { name: 'بطاطس محمرة', price: '25 ج.م' },
+      { name: 'رز بسمتي بالسجق', price: '80 ج.م' },
+      { name: 'فتة بالخل والثوم سادة', price: '40 ج.م' },
+      { name: 'فتة باللحمة البلدي', price: '235 ج.م' },
+      { name: 'نصف بطة مندي بالأرز البسمتي', price: '300 ج.م' },
+      { name: 'فتة بالموزة الضاني', price: '470 ج.م' },
+      { name: 'بانيه مقلي بالزيت', price: '150 ج.م' },
+      { name: '1 قطعة كبيبة', price: '25 ج.م' },
+      { name: '1 قطعة سمبوسك', price: '25 ج.م' },
+      { name: 'كيلو أرز بسمتي مندي', price: '200 ج.م' },
+      { name: 'فرد حمام', price: '170 ج.م' },
+      { name: 'أرز بسمتي', price: '50 - 25 ج.م' },
+      { name: 'أرز أبيض بالشعرية', price: '40 - 25 ج.م' },
+      { name: 'أرز بسمتي بالكبدة', price: '80 - 60 ج.م' },
+      { name: 'أرز أبيض بالكبدة', price: '75 - 50 ج.م' },
+      { name: 'شوربة لسان عصفور', price: '15 ج.م' },
+      { name: 'شوربة ضاني حمام', price: '15 ج.م' },
+      { name: 'محشي مشكل (باذنجان، كوسة، فلفل)', price: '80 - 60 ج.م' },
+      { name: 'محشي ورق عنب', price: '80 - 60 ج.م' },
+      { name: 'محشي كرنب', price: '80 - 60 ج.م' },
+    ],
+  },
+  {
+    id: 'mandi',
+    title: 'لحم مندي',
+    icon: '🍖',
+    items: [
+      { name: 'نفر لحم مندي + الأرز', price: '500 ج.م' },
+      { name: 'نفر لحم سوبر + الأرز', price: '750 ج.م' },
+      { name: 'نفر لحم كبسة + الأرز', price: '500 ج.م' },
+      { name: 'نفر لحم برياني + الأرز', price: '500 ج.م' },
+      { name: 'نفر لحم مندي VIP', price: '1000 ج.م' },
+    ],
+  },
+  {
+    id: 'tagines',
+    title: 'طواجن',
+    icon: '🥘',
+    items: [
+      { name: 'طاجن عكاوي كبير', price: '350 ج.م' },
+      { name: 'طاجن كوارع كبير', price: '350 ج.م' },
+      { name: 'طاجن ورق عنب بالعكاوي كبير', price: '380 ج.م' },
+      { name: 'طاجن بامية باللحمة', price: '235 ج.م' },
+      { name: 'طاجن تورلي باللحمة', price: '235 ج.م' },
+      { name: 'طاجن خضار', price: '40 و 50 ج.م' },
+      { name: 'طاجن بصل باللحمة', price: '235 ج.م' },
+      { name: 'طاجن بطاطس باللحمة', price: '235 ج.م' },
+      { name: 'طاجن ملوخية سادة', price: '50 ج.م' },
+      { name: 'علبة ملوخية', price: '40 ج.م' },
+      {
+        name: 'طاجن ديناميت (مخاصي، قلب، كلاوي، لحم ضاني، ممبار، قطع حمام، كوارع)',
+        price: '380 ج.م',
+      },
+      { name: 'طاجن الترويقة الضاني', price: '380 ج.م' },
+    ],
+  },
+  {
+    id: 'feasts',
+    title: 'العزومات',
+    icon: '🍽️',
+    items: [
+      { name: 'خروف مندي + أرز 15ك', price: '14000 ج.م' },
+      { name: 'تيس مندي + أرز', price: '8500 ج.م' },
+      { name: '½ تيس مندي + أرز', price: '4250 ج.م' },
+      { name: '¼ تيس مندي + أرز', price: '2150 ج.م' },
+      { name: '⅛ تيس مندي + أرز', price: '1150 ج.م' },
+      { name: 'بط مندي + أرز', price: '600 ج.م' },
+      { name: 'ديك رومي 8ك + أرز', price: '3500 ج.م' },
+      { name: 'ديك رومي 6ك + أرز', price: '3000 ج.م' },
+    ],
+  },
+  {
+    id: 'chicken',
+    title: 'فراخ مشوية',
+    icon: '🍗',
+    items: [
+      { name: 'فرخة شيش + أرز كبير', price: '370 ج.م' },
+      { name: 'فرخة شبك شواية + أرز', price: '370 ج.م' },
+      { name: 'فرخة شيش أو شواية + عيش + سلطات', price: '320 ج.م' },
+      { name: 'فرخة مندي + أرز', price: '370 ج.م' },
+      { name: 'شيش طاووق أو ك بانيه مشوي + أرز', price: '440 ج.م' },
+      { name: 'شيش طاووق أو ك بانيه مشوي', price: '380 ج.م' },
+      { name: 'ربع فرخة صدر (مشوي أو مندي) + أرز', price: '120 ج.م' },
+      { name: 'ربع فرخة ورك (مشوي أو مندي) + أرز', price: '100 ج.م' },
+    ],
+  },
+  {
+    id: 'grills',
+    title: 'قسم المشويات',
+    icon: '🔥',
+    items: [
+      { name: 'ك ريش ضاني', price: '1000 ج.م' },
+      { name: 'ك كباب ضاني', price: '1000 ج.م' },
+      { name: 'ك كباب أحمر', price: '1000 ج.م' },
+      { name: 'ك مشكل ضاني', price: '850 ج.م' },
+      { name: 'ك أستيك كندوز', price: '1000 ج.م' },
+      { name: 'ك كفتة ضاني', price: '700 ج.م' },
+      { name: 'ك كفتة كندوز', price: '500 ج.م' },
+      { name: 'موزة ضاني', price: '470 ج.م' },
+      { name: 'ك طرب ضاني', price: '800 ج.م' },
+      { name: 'ك طرب كندوز', price: '700 ج.م' },
+      { name: 'ك سجق مشوي', price: '600 ج.م' },
+      { name: 'ك كبدة وقلب وكلاوي ومخاصي بلدي', price: '1000 ج.م' },
+      { name: 'ك نيفة ضاني', price: '1000 ج.م' },
+      { name: 'ربع كيلو نيفة', price: '250 ج.م' },
+    ],
+  },
+  {
+    id: 'sandwiches',
+    title: 'سندوتشات',
+    icon: '🥙',
+    items: [
+      { name: 'كفتة كندوز', price: '65 - 45 ج.م' },
+      { name: 'كفتة ضاني', price: '90 ج.م' },
+      { name: 'شيش طاووق', price: '60 ج.م' },
+      { name: 'كبدة بلدي', price: '125 ج.م' },
+      { name: 'طرب', price: '120 - 75 ج.م' },
+      { name: 'بانيه', price: '60 ج.م' },
+      { name: 'كباب', price: '125 ج.م' },
+      { name: 'سجق', price: '75 - 50 ج.م' },
+      { name: 'أستيك كندوز', price: '125 ج.م' },
+      { name: 'كبدة اسكندراني', price: '35 - 25 ج.م' },
+    ],
+  },
+  {
+    id: 'meals',
+    title: 'الوجبات',
+    icon: '🍛',
+    items: [
+      { name: 'وجبة ربع سجق', price: '170 ج.م' },
+      { name: 'وجبة بانيه وكفتة', price: '170 ج.م' },
+      { name: 'وجبة البخاري صدر', price: '220 ج.م' },
+      { name: 'فرخة مندي', price: '370 ج.م' },
+      { name: 'وجبة البخاري ورك', price: '210 ج.م' },
+      { name: 'وجبة شيش طاووق وكفتة', price: '150 ج.م' },
+      { name: 'وجبة كفتة وطرب', price: '160 ج.م' },
+      { name: 'وجبة ورك شواية', price: '100 ج.م' },
+      { name: 'وجبة ميكس مندي', price: '350 ج.م' },
+      { name: 'وجبة الخير', price: '100 ج.م' },
+      { name: 'وجبة ميكس جريل', price: '350 ج.م' },
+      { name: 'وجبة ربع شيش أو بانيه مشوي', price: '160 ج.م' },
+      { name: 'وجبة ميكس صدر', price: '180 ج.م' },
+      { name: 'وجبة نصف فرخة ربع كفتة', price: '300 ج.م' },
+      { name: 'وجبة كفتة', price: '150 ج.م' },
+      { name: 'وجبة نصف مندي', price: '190 ج.م' },
+      { name: 'وجبة نصف فرخة + تمن كفتة', price: '250 ج.م' },
+      { name: 'وجبة ميكس ورك', price: '170 ج.م' },
+      {
+        name: 'وجبة البركة (نص فرخة وتمن كفتة + 2 قطعة لحم مندي)',
+        price: '450 ج.م',
+      },
+      { name: 'وجبة البخارية (5 ورك و ربع كفتة)', price: '500 ج.م' },
+      { name: 'وجبة صدر شواية', price: '120 ج.م' },
+      { name: 'نصف فرخة', price: '190 ج.م' },
+    ],
+  },
+  {
+    id: 'hawawshi',
+    title: 'حواوشي',
+    icon: '🥪',
+    items: [
+      { name: 'حواوشي كندوز', price: '40 ج.م' },
+      { name: 'مخصوص VIP حواوشي', price: '75 ج.م' },
+      { name: 'حواوشي موزريلا', price: '100 ج.م' },
+    ],
+  },
+  {
+    id: 'griddle',
+    title: 'الجريل',
+    icon: '🍳',
+    items: [
+      { name: 'ورقة لحمة', price: '230 ج.م' },
+      { name: 'ورقة سجق', price: '200 ج.م' },
+      { name: 'ورقة مخاصي', price: '200 ج.م' },
+      { name: 'ورقة كبدة باللية', price: '200 ج.م' },
+      { name: 'ورقة شيش أو فيليه', price: '200 ج.م' },
+    ],
+  },
+  {
+    id: 'cooking',
+    title: 'التسويات',
+    icon: '👨‍🍳',
+    items: [
+      { name: 'تسوية ديك رومي 10 كيلو', price: '600 ج.م' },
+      { name: 'تسوية بطة 2كيلو + أرز', price: '300 ج.م' },
+      { name: 'تسوية فخدة 3كيلو + أرز', price: '400 ج.م' },
+      { name: 'كيلو تسوية كفتة أو فراخ أو كباب شوي', price: '60 ج.م' },
+      { name: 'تسوية كيلو لحم مندي', price: '60 ج.م' },
+      { name: 'تسوية خروف خارجي', price: '65 ج.م للكيلو بدون أرز' },
+      { name: 'كيلو الأرز البسمتي', price: '200 ج.م' },
+    ],
+  },
+  {
+    id: 'platters',
+    title: 'الصواني',
+    icon: '🍱',
+    items: [
+      {
+        name: 'صينية الوحش',
+        desc: 'نصف تيس مندي + كيلو ونص كفتة + كيلو ونص طرب + 2 فرخة مندي أو مشوي + كيلو ممبار + أرز + سلطات + عيش',
+        price: '6500 ج.م',
+      },
+      {
+        name: 'صينية السوبر ستار',
+        desc: 'تمن تيس مندي + نص كباب + كيلو كفتة أو طرب + كيلو شيش أو بانيه + 2 حمام محشي + كيلو محاشي ورق عنب وممبار + نص سجق + أرز + سلطات + عيش',
+        price: '3300 ج.م',
+      },
+      {
+        name: 'صينية التوفير',
+        desc: 'ربع تيس مندي + كيلو كفتة + كيلو طرب + فرخة مشوي أو مندي + أرز + سلطات + عيش',
+        price: '3500 ج.م',
+      },
+      {
+        name: 'صينية الأكيلية',
+        desc: 'تمن تيس مندي + كيلو كفتة + كيلو طرب + 2 حمام + 1 فرخة مندي أو مشوي + كيلو محاشي + أرز + سلطات',
+        price: '3000 ج.م',
+      },
+      {
+        name: 'صينية تكفي 8 أفراد',
+        desc: 'كيلو كباب + كيلو مشكل كفتة وطرب + فرخة مندي أو مشوي + نص سجق + أرز + سلطات',
+        price: '2200 ج.م',
+      },
+      {
+        name: 'صينية العريس',
+        desc: '4 فرد حمام محشي + نصف مخاصي + نصف كفتة + نصف ممبار + نصف طرب + كيلو محاشي مشكل + أرز + سلطات',
+        price: '1850 ج.م',
+      },
+      {
+        name: 'صينية حضرموت',
+        desc: 'ثمن تيس مندي + كيلو كفتة + فرخة مشوي أو مندي + أرز + سلطات',
+        price: '1700 ج.م',
+      },
+      {
+        name: 'صينية تكفي 5 أفراد',
+        desc: 'تمن تيس مندي + نصف كفتة + نصف فرخة + نصف سجق + أرز بسمتي + سلطات',
+        price: '1600 ج.م',
+      },
+      {
+        name: 'صينية تكفي 4 أفراد',
+        desc: 'فرخة مشوية أو مندي + كيلو كفتة + أرز + سلطات',
+        price: '800 ج.م',
+      },
+      {
+        name: 'صينية تكفي 3 أفراد',
+        desc: 'نصف كفتة + نصف فرخة + ربع طرب + أرز + سلطات',
+        price: '600 ج.م',
+      },
+    ],
+  },
+];
+
+/* القائمة والأسعار محفوظة كاملة في MENU_DATA في أعلى الملف، ويمكن تعديلها مباشرة. */
+const allItems = MENU_DATA.flatMap((section) =>
+  section.items.map((item, index) => ({
+    ...item,
+    categoryId: section.id,
+    categoryName: section.title,
+    id: `${section.id}-${index}`,
+  }))
+);
+const state = {
+  category: 'all',
+  query: '',
+  sort: 'original',
+  favoritesOnly: false,
+};
+const saved = (() => {
+  try {
+    return JSON.parse(localStorage.getItem('hadramout-favorites-v1') || '[]');
+  } catch {
+    return [];
+  }
+})();
+const favorites = new Set(Array.isArray(saved) ? saved : []);
+const byId = (id) => document.getElementById(id);
+const arabicNumber = (text) =>
+  String(text).replace(/[٠-٩۰-۹]/g, (d) =>
+    String(
+      '٠١٢٣٤٥٦٧٨٩'.indexOf(d) >= 0
+        ? '٠١٢٣٤٥٦٧٨٩'.indexOf(d)
+        : '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)
+    )
+  );
+const numbers = (text) =>
+  [...arabicNumber(text).matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0]));
+const minPrice = (item) => Math.min(...numbers(item.price));
+const safe = (text) =>
+  String(text ?? '').replace(
+    /[&<>"']/g,
+    (ch) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
+        ch
+      ]
+  );
+const normalize = (text) =>
+  arabicNumber(String(text || ''))
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\u064b-\u065f\u0670\u0640]/g, '')
+    .replace(/[إأآٱ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/ة/g, 'ه')
+    .replace(/[\s\-]+/g, ' ')
+    .trim();
+
+function renderOffers() {
+  byId('offer-grid').innerHTML = MENU_DATA[0].items
+    .map((item) => {
+      const discount = numbers(item.oldPrice)[0] - numbers(item.price)[0];
+      return `<article class="offer-card"><span class="offer-badge">عرض خاص ✦</span><h3>${safe(item.name)}</h3><div class="offer-price"><strong>${safe(item.price)}</strong><del>${safe(item.oldPrice)}</del><span class="offer-savings">وفّر ${discount} ج.م</span></div></article>`;
+    })
+    .join('');
+}
+function renderFilters() {
+  const data = [
+    { id: 'all', title: 'كل الأقسام', items: allItems },
+    ...MENU_DATA,
+  ];
+  byId('filters').innerHTML = data
+    .map(
+      (c) =>
+        `<button type="button" class="chip ${state.category === c.id ? 'active' : ''}" data-filter="${safe(c.id)}" aria-pressed="${state.category === c.id}">${c.id === 'all' ? '✦ ' : ''}${safe(c.title)} <span>${c.items.length}</span></button>`
+    )
+    .join('');
+}
+function matched(item) {
+  if (state.favoritesOnly && !favorites.has(item.id)) return false;
+  if (state.category !== 'all' && item.categoryId !== state.category)
+    return false;
+  const terms = normalize(state.query).split(' ').filter(Boolean);
+  if (!terms.length) return true;
+  const haystack = normalize(
+    [item.name, item.desc || '', item.price, item.categoryName].join(' ')
+  );
+  return terms.every((term) => haystack.includes(term));
+}
+function dishHtml(item) {
+  const selected = favorites.has(item.id);
+  return `<article class="dish-card"><div class="dish-copy"><h4 class="dish-name">${safe(item.name)}</h4>${item.desc ? `<p class="dish-desc">${safe(item.desc)}</p>` : ''}</div><div class="dish-cost"><strong>${safe(item.price)}</strong>${item.oldPrice ? `<del>${safe(item.oldPrice)}</del>` : ''}</div><button type="button" class="heart" data-heart="${safe(item.id)}" aria-label="${selected ? 'إزالة من' : 'إضافة إلى'} المفضلة: ${safe(item.name)}" aria-pressed="${selected}">${selected ? '♥' : '♡'}</button></article>`;
+}
+function render() {
+  const result = allItems.filter(matched);
+  byId('result-count').textContent =
+    `عرض ${result.length} من أصل ${allItems.length} صنف وعرض`;
+  byId('fav-count').textContent = favorites.size;
+  byId('fav-filter').classList.toggle('active', state.favoritesOnly);
+  byId('fav-filter').setAttribute('aria-pressed', String(state.favoritesOnly));
+  const isFiltered = Boolean(
+    state.query ||
+    state.category !== 'all' ||
+    state.favoritesOnly ||
+    state.sort !== 'original'
+  );
+  byId('reset').hidden = !isFiltered;
+  byId('empty').hidden = result.length > 0;
+  const html = MENU_DATA.map((section) => {
+    let items = result.filter((item) => item.categoryId === section.id);
+    if (items.length === 0) return '';
+    if (state.sort === 'asc') items.sort((a, b) => minPrice(a) - minPrice(b));
+    else if (state.sort === 'desc')
+      items.sort((a, b) => minPrice(b) - minPrice(a));
+    else if (state.sort === 'name')
+      items.sort((a, b) => a.name.localeCompare(b.name, 'ar'));
+    return `<section class="category" id="section-${safe(section.id)}" aria-label="${safe(section.title)}"><div class="category-title"><div class="category-icon" aria-hidden="true">${section.icon}</div><div><h3>${safe(section.title)}</h3><p>${items.length} ${items.length === 1 ? 'صنف' : 'أصناف'}</p></div></div><div class="dish-grid ${section.id === 'platters' ? 'platters' : ''}">${items.map(dishHtml).join('')}</div></section>`;
+  }).join('');
+  byId('sections').innerHTML = html;
+  renderFilters();
+}
+function reset() {
+  state.category = 'all';
+  state.query = '';
+  state.sort = 'original';
+  state.favoritesOnly = false;
+  byId('search').value = '';
+  byId('sort').value = 'original';
+  render();
+}
+byId('filters').addEventListener('click', (e) => {
+  const button = e.target.closest('[data-filter]');
+  if (!button) return;
+  state.category = button.dataset.filter;
+  render();
+});
+byId('sections').addEventListener('click', (e) => {
+  const button = e.target.closest('[data-heart]');
+  if (!button) return;
+  const id = button.dataset.heart;
+  if (favorites.has(id)) favorites.delete(id);
+  else favorites.add(id);
+  try {
+    localStorage.setItem(
+      'hadramout-favorites-v1',
+      JSON.stringify([...favorites])
+    );
+  } catch {}
+  render();
+});
+byId('search').addEventListener('input', (e) => {
+  state.query = e.target.value;
+  render();
+});
+byId('sort').addEventListener('change', (e) => {
+  state.sort = e.target.value;
+  render();
+});
+byId('fav-filter').addEventListener('click', () => {
+  state.favoritesOnly = !state.favoritesOnly;
+  render();
+});
+byId('reset').addEventListener('click', reset);
+byId('empty-reset').addEventListener('click', reset);
+document.addEventListener('keydown', (e) => {
+  if (
+    e.key === '/' &&
+    !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)
+  ) {
+    e.preventDefault();
+    byId('search').focus();
+  }
+  if (e.key === 'Escape' && document.activeElement === byId('search')) {
+    byId('search').blur();
+    state.query = '';
+    byId('search').value = '';
+    render();
+  }
+});
+let prePrintState = null;
+function beforePrint() {
+  prePrintState = { ...state };
+  state.category = 'all';
+  state.query = '';
+  state.sort = 'original';
+  state.favoritesOnly = false;
+  render();
+}
+function afterPrint() {
+  if (prePrintState) {
+    Object.assign(state, prePrintState);
+    prePrintState = null;
+    render();
+  }
+}
+window.addEventListener('beforeprint', beforePrint);
+window.addEventListener('afterprint', afterPrint);
+byId('print-menu').addEventListener('click', () => window.print());
+byId('back-top').addEventListener('click', () =>
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+);
+window.addEventListener(
+  'scroll',
+  () => byId('back-top').classList.toggle('show', window.scrollY > 650),
+  { passive: true }
+);
+byId('count-items').textContent = allItems.length;
+byId('count-sections').textContent = MENU_DATA.length;
+renderOffers();
+render();
